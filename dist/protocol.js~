@@ -1,0 +1,27 @@
+/**
+ *
+ *pomele client encode
+ * id message id;
+ * route message route
+ * msg message body
+ * socketio current support string
+ *
+ */
+
+Protocol.clientEncode = function(id,route,msg){
+    var msgStr = JSON.stringify(msg);
+    var byteArray = new Uint8Array(HEADER + route.length + msgStr.length);
+    var index = 0;
+    byteArray[index++] = (id>>24) & 0xFF;
+    byteArray[index++] = (id>>16) & 0xFF;
+    byteArray[index++] = (id>>8) & 0xFF;
+    byteArray[index++] = id & 0xFF;
+    byteArray[index++] = route.length;
+    for(var i = 0;i<route.length;i++){
+        byteArray[index++] = route.charCodeAt(i);
+    }
+    for (var i = 0; i < msgStr.length; i++) {
+        byteArray[index++] = msgStr.charCodeAt(i);
+    }
+    return String.fromCharCode.apply(null,byteArray);
+};

@@ -1,0 +1,30 @@
+var testEnocde = function() {
+    var buf = new Buffer(5);
+    var id = 4294967293; 
+    console.log((id >> 24) & 0xFF) + "." + ((id >> 16) & 0xFF) + "." + ((id >> 8) & 0xFF) + "." + (id & 0xFF);
+    console.log(id);
+    buf.writeUInt8((id>>24) & 0xFF,0);
+    buf.writeUInt8((id>>16) & 0xFF,1);
+    buf.writeUInt8((id>>8) & 0xFF,2);
+    buf.writeUInt8(id & 0xFF,3);
+    buf.writeUInt8(0xff,4);
+    console.log(buf);
+};
+
+var testDecode = function() {
+    var buf2 = new Buffer(5);
+    var y = (buf.readUInt8(0) <<24) | ((buf.readUInt8(1) ) << 16 ) |  ((buf.readUInt8(2)) << 8) | (buf.readUInt8(3)); 
+    var l= buf.readUInt8(4);
+    console.log('ll ' + l);
+    console.log('ss' + (y>>>0));
+
+    var byteArray = new Uint8Array(4);
+    var index = 0;
+    byteArray[index++] = 0x36;
+
+    var s = byteArray.buffer.toString('ascii', 0, byteArray.buffer.length);
+    console.log(s);
+};
+
+testDecode();
+testEnocde();
