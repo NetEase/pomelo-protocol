@@ -3,7 +3,7 @@ var route = "";
 for(var i= 0;i<255;i++) {
     route+="t";
 }
-var msg = {'name':'pomelo'};
+var msg = {'name':'看了不'};
 var route = 'connect';
 var id = 4294967294;
 debugger;
@@ -12,4 +12,6 @@ console.log(str);
 var dmsg = Protocol.decode(str);
 console.log(dmsg.id);
 console.log(dmsg.route);
+console.log('ssssssssssssssbody' + dmsg.body);
+console.log(JSON.parse(dmsg.body));
 console.log('%j',dmsg);
