@@ -3,7 +3,7 @@ var route = "";
 for(var i= 0;i<255;i++) {
     route+="t";
 }
-var msg = {'name':'看了不'};
+var msg = {'name':'看了v不'};
 var route = 'connect';
 var id = 4294967294;
 debugger;
