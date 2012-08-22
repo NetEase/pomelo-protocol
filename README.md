@@ -1,21 +1,21 @@
 #pomelo-protocol
 pomelo-protocol is simple tool to encode request to fixed format string.
 
-until current socket.io  version (0.9.6), it can only support transport string
-message to socket.io server. And if you emmit message from fronted server to
+Until current socket.io  version (0.9.6), it can only support transport string
+message to socket.io server. And if you emit message from fronted server to
 other many backed server,the message should be encode(decode) many times.if it
-occurs in very common situation and frequently, the cpu cost will be in a hight
-rate. we need simple send message with string and no need extra encode(decode)
+occurs in very common situation and frequently, the CPU cost will be in a hight
+rate. We need simple send message with string and no need extra encode(decode)
 cost in connect server. 
 
-pomelo-protocol encode the message for the params (id,route,body), after call
+pomelo-protocol encode the message for the param (id,route,body), after call
 encode function.it should return the following format message;
 
 -------------------------------------------------
 | 4 bytes | 1 byte(route length) | route | body |
 -------------------------------------------------
 
-as the same, if it's decode function is called with the aboved format
+As the same, if it's decode function is called with the above format
 message,it should return the message object with id,route,body field.
 
 
@@ -47,6 +47,6 @@ encode the message to the fixed format
 + body -  real message content 
 
 ###protocol.decode(message)
-decode meesage to message object
+decode string message to message object
 ####Arguments
 + message - the content should be decode
