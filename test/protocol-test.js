@@ -21,8 +21,36 @@ describe(' Decode Test ',function() {
         var id = 4294967293;
         var buf = protocol.encode(id,route,msg);
         var dmsg = protocol.decode(buf);
-        console.log(dmsg.id);
+        //console.log(dmsg.id);
         dmsg.id.should.equal(4294967293);
     });
 });
+
+
+describe(' Chinese message Test ',function() {
+    it (' normal test',function() {
+        var msg = {'name':'看了v不'};
+        var route = 'connect';
+        var id = 4294967294;
+        var str = protocol.encode(id,route,msg);
+        var dmsg = protocol.decode(str);
+        dmsg.id.should.equal(4294967294);
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
