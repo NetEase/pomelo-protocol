@@ -10,7 +10,6 @@ describe(' encode Test ',function() {
         buf.charCodeAt(0).should.equal(0xff);
         buf.charCodeAt(4).should.equal(7);
         buf.length.should.equal(5+route.length+JSON.stringify(msg).length);
-        //console.log(buf.toString('ascii',0,buf.length));
     });
 });
 
@@ -21,8 +20,8 @@ describe(' Decode Test ',function() {
         var id = 4294967293;
         var buf = protocol.encode(id,route,msg);
         var dmsg = protocol.decode(buf);
-        //console.log(dmsg.id);
-        dmsg.id.should.equal(4294967293);
+        dmsg.id.should.equal(id);
+        dmsg.route.should.equal(route);
     });
 });
 
@@ -34,7 +33,9 @@ describe(' Chinese message Test ',function() {
         var id = 4294967294;
         var str = protocol.encode(id,route,msg);
         var dmsg = protocol.decode(str);
-        dmsg.id.should.equal(4294967294);
+        dmsg.id.should.equal(id);
+				dmsg.route.should.equal(route);
+				dmsg.body.should.equal(JSON.stringify(msg));
     });
 });
 
