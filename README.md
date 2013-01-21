@@ -20,7 +20,7 @@ pomelo-protocol encode the message for the param (id,route,body), after call
 encode function.it should return the following format message;
 
 -------------------------------------------------
-| 4 bytes | 1 byte(route length) | route | body |
+| 1 bytes | 2 byte(body length) | route | body |
 -------------------------------------------------
 
 As the same, if it's decode function is called with the above format
