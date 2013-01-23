@@ -16,12 +16,14 @@ describe(' encode and decode Test ',function() {
 		var m = protocol.head.decode(buf);
 		console.log(m);
 		m.flag.should.equal(3);
-		buf = protocol.body.encode(1,0,protocol.strencode('move'),protocol.strencode('Hello world'))
+		var route = 'connector.server.loging';
+		var body = {'a':1,'b':2};
+		buf = protocol.body.encode(1,0,protocol.strencode(route),protocol.strencode(body));
 		var _m = protocol.body.decode(buf);
 		console.log(protocol.strdecode(_m.route));
 		console.log(_m.buffer);
 		console.log(protocol.strdecode(_m.buffer));
-		protocol.strdecode(_m.route).should.equal('move');
+		protocol.strdecode(_m.route).should.equal(route);
 	});
 });
 
