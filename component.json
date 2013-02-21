@@ -6,6 +6,7 @@
     "protocol"
   ],
   "version": "0.0.9",
+  "main":"lib/protocol.js",
   "scripts": [
     "lib/protocol.js"
   ],
