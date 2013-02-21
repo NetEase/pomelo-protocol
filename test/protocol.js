@@ -54,6 +54,42 @@ describe('Pomelo protocol test', function() {
       msg.should.equal(Protocol.strdecode(res.body));
     });
 
+    it('should be ok for encoding and decoding empty route', function() {
+      var id = 1;
+      var compress = 0;
+      var route = '';
+      var msg = 'hello world~';
+      var buf = Message.encode(id, Message.TYPE_REQUEST, compress,
+                               route, Protocol.strencode(msg));
+      should.exist(buf);
+      var res = Message.decode(buf);
+      should.exist(res);
+      id.should.equal(res.id);
+      Message.TYPE_REQUEST.should.equal(res.type);
+      compress.should.equal(res.compressRoute);
+      route.should.equal(res.route);
+      should.exist(res.body);
+      msg.should.equal(Protocol.strdecode(res.body));
+    });
+
+    it('should be ok for encoding and decoding null route', function() {
+      var id = 1;
+      var compress = 0;
+      var route = null;
+      var msg = 'hello world~';
+      var buf = Message.encode(id, Message.TYPE_REQUEST, compress,
+                               route, Protocol.strencode(msg));
+      should.exist(buf);
+      var res = Message.decode(buf);
+      should.exist(res);
+      id.should.equal(res.id);
+      Message.TYPE_REQUEST.should.equal(res.type);
+      compress.should.equal(res.compressRoute);
+      res.route.should.equal('');
+      should.exist(res.body);
+      msg.should.equal(Protocol.strdecode(res.body));
+    });
+
     it('should be ok for encoding and decoding compress route', function() {
       var id = 1;
       var compress = 1;
