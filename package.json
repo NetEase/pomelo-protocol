@@ -1,6 +1,6 @@
 {
   "name": "pomelo-protocol",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "private": false,
   "dependencies": {
   },
@@ -10,4 +10,3 @@
     "jscoverage": ">=0.0.1"
   }
 }
-
