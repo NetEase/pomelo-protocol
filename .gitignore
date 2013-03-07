@@ -10,3 +10,5 @@ node_modules/*
 *.sublime-project
 *.sublime-workspace
 *.swp
+coverage.html
+lib-cov/

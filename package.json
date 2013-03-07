@@ -1,13 +1,12 @@
 {
   "name": "pomelo-protocol",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "private": false,
   "dependencies": {
   },
   "devDependencies": {
-  	"flow": ">=0.2.2"
-    , "should": ">=0.0.1"
-    , "mocha": ">=0.0.1"
+    "should": ">=0.0.1",
+    "mocha": ">=0.0.1",
+    "jscoverage": ">=0.0.1"
   }
 }
-
