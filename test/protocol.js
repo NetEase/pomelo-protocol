@@ -37,7 +37,7 @@ describe('Pomelo protocol test', function() {
 
   describe('Message encode and decode', function() {
     it('should be ok for encoding and decoding request', function() {
-      var id = 1;
+      var id = 128;
       var compress = 0;
       var route = 'connector.entryHandler.entry';
       var msg = 'hello world~';
@@ -55,7 +55,7 @@ describe('Pomelo protocol test', function() {
     });
 
     it('should be ok for encoding and decoding empty route', function() {
-      var id = 1;
+      var id = 256;
       var compress = 0;
       var route = '';
       var msg = 'hello world~';
@@ -73,7 +73,8 @@ describe('Pomelo protocol test', function() {
     });
 
     it('should be ok for encoding and decoding null route', function() {
-      var id = 1;
+      var n = Math.floor(10000*Math.random());
+      var id = 128 * n;
       var compress = 0;
       var route = null;
       var msg = 'hello world~';
@@ -91,7 +92,7 @@ describe('Pomelo protocol test', function() {
     });
 
     it('should be ok for encoding and decoding compress route', function() {
-      var id = 1;
+      var id = 256;
       var compress = 1;
       var route = 3;
       var msg = 'hello world~';
@@ -100,6 +101,7 @@ describe('Pomelo protocol test', function() {
       should.exist(buf);
       var res = Message.decode(buf);
       should.exist(res);
+
       id.should.equal(res.id);
       Message.TYPE_REQUEST.should.equal(res.type);
       compress.should.equal(res.compressRoute);
@@ -121,6 +123,7 @@ describe('Pomelo protocol test', function() {
       id.should.equal(res.id);
       Message.TYPE_REQUEST.should.equal(res.type);
       compress.should.equal(res.compressRoute);
+
       route.should.equal(res.route);
       should.exist(res.body);
       msg.should.equal(Protocol.strdecode(res.body));
