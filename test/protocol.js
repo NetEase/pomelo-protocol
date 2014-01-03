@@ -9,7 +9,7 @@ describe('Pomelo protocol test', function() {
       var str = '你好, abc~~~';
       var buf = Protocol.strencode(str);
       should.exist(buf);
-      str.should.equal(Protocol.strdecode(str));
+      str.should.equal(Protocol.strdecode(buf));
     });
   });
 
