@@ -1,9 +1,8 @@
 {
   "name": "pomelo-protocol",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": false,
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "should": ">=0.0.1",
     "mocha": ">=0.0.1",
